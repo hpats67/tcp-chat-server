@@ -7,7 +7,11 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "pretest": "npm run lint",
+    "test": "npm run test:run",
+    "test:run": "mocha",
+    "test:watch": "npm run test:run -- -w",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -25,6 +29,6 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "project-name-generator": "^2.1.3"
+    "nodemon": "^1.11.0"
   }
 }
