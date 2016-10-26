@@ -11,7 +11,6 @@
     "test": "npm run test:run",
     "test:run": "mocha",
     "test:watch": "npm run test:run -- -w",
-    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
