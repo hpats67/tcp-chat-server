@@ -6,15 +6,21 @@ const newChat = new chat();
 const server = net.createServer(socket => {
     socket.setEncoding('utf-8');
 
-    chat.add(c);
+    newChat.add(socket);
 
     socket.on('data', message => {
-        chat.send(message,data);
+        newChat.send(socket,message);
+        let parsed = message.split(' ');
+        if (parsed[0] === '/newName') {
+            newName = parsed[1].replace('\r\n','');
+            newChat.changeName(socket, newName);
+            console.log(socket.name);
+        }
     });
 
     socket.on('close', () => {
-        chat.remove(client);
-        console.log(`${client.name} has disconnected`);
+        newChat.remove(socket);
+        console.log(`${socket.name} has disconnected`);
     });
 });
 

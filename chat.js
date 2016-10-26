@@ -1,4 +1,4 @@
-module.exports = class chat {
+module.exports = class Chat {
     constructor() {
         this.clients = [];
         this.clientNum = 1;
@@ -10,14 +10,14 @@ module.exports = class chat {
         this.clients.forEach(c => {
             client.write('Welcome to the Steven\'s Chat, you are connected!\n');
             client.write(`Hello, ${client.name} !\n`);
-            client.write(`If you wish to change your name use \n \nick <yourName>.\n`);
+            client.write(`If you wish to change your name use /newName <yourName>.\n`);
         });
     console.log(`${client.name} is connected!\n`);
     };
 
-    chat(sender, message){
+    send(sender, message){
         this.clients.forEach(c => {
-            if(c === client) return;
+            if(c === sender) return;
             c.write(`${sender.name}: ${message}`);
         });
     };
@@ -30,6 +30,7 @@ module.exports = class chat {
 
     changeName(sender) {
         let oldName = sender.name;
+        sender.name = newName;
         this.clients.forEach(c => {
             if (c === sender) return;
             c.write(`${oldName} will now be dubbed ${sender.name}\n`);
